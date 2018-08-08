@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IT_Log.Business_Layer;
 using IT_Log.Model;
@@ -23,6 +17,8 @@ namespace IT_Log
         private void mainForm_Load(object sender, EventArgs e)
         {
             dataGridViewITLog.DataSource = ITLogServices.GetAll();
+
+            dataGridViewITLog.ClearSelection();
         }
 
         private void refreshList() {
@@ -61,6 +57,65 @@ namespace IT_Log
                 {
                     refreshList();
                 }
+            }
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to edit this?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (dataGridViewITLog.SelectedCells.Count > 0)
+                {
+
+                    int selectedrowindex = dataGridViewITLog.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dataGridViewITLog.Rows[selectedrowindex];
+
+                    int id = Convert.ToInt32(selectedRow.Cells[0].Value);
+
+                    using (FormAddEdit frm = new FormAddEdit(id))
+                    {
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            refreshList();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void dataGridViewITLog_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) {
+
+                if (dataGridViewITLog.HitTest(e.X, e.Y) == DataGridView.HitTestInfo.Nowhere) {
+
+                    dataGridViewITLog.ClearSelection();
+                }
+            }
+            if (dataGridViewITLog.SelectedRows.Count == 1)
+            {
+                buttonEdit.Enabled = true;
+            }
+            else {
+                buttonEdit.Enabled = false;
+            }
+            
+        }
+
+        private void mainForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                dataGridViewITLog.ClearSelection();
+            }
+
+            if (dataGridViewITLog.SelectedRows.Count == 1)
+            {
+                buttonEdit.Enabled = true;
+            }
+            else
+            {
+                buttonEdit.Enabled = false;
             }
         }
     }

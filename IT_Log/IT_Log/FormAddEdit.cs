@@ -3,12 +3,6 @@ using IT_Log.Business_Layer;
 using IT_Log.Data_Layer;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IT_Log
@@ -16,6 +10,7 @@ namespace IT_Log
     public partial class FormAddEdit : Form
     {
         bool IsNew;
+        it_log updateObj;
 
         public FormAddEdit(int? id)
         {
@@ -26,14 +21,23 @@ namespace IT_Log
                 IsNew = true;
             }
             else {
-
+                this.updateObj = ITLogServices.GetById((int)id);
                 IsNew = false;
+
+                textBoxName.Text = updateObj.name;
+                textBoxOffice.Text = updateObj.office;
+                dateTimePickerDate.Text = Convert.ToDateTime(updateObj.date).ToString();
+                dateTimePickerTime.Text = updateObj.time.ToString();
+                textBoxServiceRequest.Text = updateObj.service_request;
+                comboBoxITPersonnel.SelectedIndex = (int)updateObj.it_personnel_id;
             }
         }
 
         private void FormAddEdit_Load(object sender, EventArgs e)
         {
-            comboBoxITPersonnel.SelectedIndex = 0;
+            if (IsNew == true) {
+                comboBoxITPersonnel.SelectedIndex = 0;
+            } 
         }
 
         private void FormAddEdit_FormClosing(object sender, FormClosingEventArgs e)
@@ -80,24 +84,31 @@ namespace IT_Log
                     return;
                 }
 
-                var log = new it_log()
-                {
-
-                    name = textBoxName.Text.ToString(),
-                    office = textBoxOffice.Text.ToString(),
-                    date = Convert.ToDateTime(dateTimePickerDate.Text),
-                    time = TimeSpan.Parse(dateTimePickerTime.Text),
-                    service_request = textBoxServiceRequest.Text.ToString(),
-                    it_personnel_id = comboBoxITPersonnel.SelectedIndex
-                };
-
                 if (IsNew)
                 {
+                    var log = new it_log()
+                    {
+
+                        name = textBoxName.Text.ToString(),
+                        office = textBoxOffice.Text.ToString(),
+                        date = Convert.ToDateTime(dateTimePickerDate.Text),
+                        time = TimeSpan.Parse(dateTimePickerTime.Text),
+                        service_request = textBoxServiceRequest.Text.ToString(),
+                        it_personnel_id = comboBoxITPersonnel.SelectedIndex
+                    };
+
                     ITLogServices.Insert(log);
                     MessageBox.Show("Added!");
                 }else
                 {
-                    //EmployeeInfoServices.Update(employeeinfoBindingSource.Current as employee_info);
+                    updateObj.name = textBoxName.Text.ToString();
+                    updateObj.office = textBoxOffice.Text.ToString();
+                    updateObj.date = Convert.ToDateTime(dateTimePickerDate.Text);
+                    updateObj.time = TimeSpan.Parse(dateTimePickerTime.Text);
+                    updateObj.service_request = textBoxServiceRequest.Text.ToString();
+                    updateObj.it_personnel_id = comboBoxITPersonnel.SelectedIndex;
+
+                    ITLogServices.Update(updateObj);
                     MessageBox.Show("Saved!");
                 }
 
