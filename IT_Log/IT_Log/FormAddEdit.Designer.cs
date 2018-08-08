@@ -196,6 +196,7 @@
             this.Name = "FormAddEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add/Edit Log";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAddEdit_FormClosing);
             this.Load += new System.EventHandler(this.FormAddEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
