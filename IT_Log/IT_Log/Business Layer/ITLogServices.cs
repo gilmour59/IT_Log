@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using IT_Log.Data_Layer;
 using IT_Log.Model;
 
@@ -13,7 +14,7 @@ namespace IT_Log.Business_Layer
             repository = new ITLogRepository();
         }
 
-        public static IList<it_log> GetAll() {
+        public static IList GetAll() {
 
             return repository.GetAll();
         }
@@ -33,9 +34,9 @@ namespace IT_Log.Business_Layer
             repository.Update(obj);
         }
 
-        public static void Delete(it_log obj) {
+        public static void Delete(int id) {
 
-            repository.Delete(obj);
+            repository.Delete(id);
         }
     }
 }

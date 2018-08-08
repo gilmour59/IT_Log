@@ -37,11 +37,17 @@
             // 
             // dataGridViewITLog
             // 
+            this.dataGridViewITLog.AllowUserToAddRows = false;
+            this.dataGridViewITLog.AllowUserToDeleteRows = false;
+            this.dataGridViewITLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewITLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewITLog.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewITLog.Name = "dataGridViewITLog";
+            this.dataGridViewITLog.ReadOnly = true;
+            this.dataGridViewITLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewITLog.Size = new System.Drawing.Size(737, 306);
             this.dataGridViewITLog.TabIndex = 0;
+            this.dataGridViewITLog.SelectionChanged += new System.EventHandler(this.dataGridViewITLog_SelectionChanged);
             // 
             // buttonAdd
             // 
@@ -49,9 +55,10 @@
             this.buttonAdd.Location = new System.Drawing.Point(212, 343);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(82, 42);
-            this.buttonAdd.TabIndex = 1;
+            this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonEdit
             // 
@@ -69,9 +76,10 @@
             this.buttonDelete.Location = new System.Drawing.Point(455, 343);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(82, 42);
-            this.buttonDelete.TabIndex = 1;
+            this.buttonDelete.TabIndex = 2;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // mainForm
             // 

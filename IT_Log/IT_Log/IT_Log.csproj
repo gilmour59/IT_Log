@@ -69,11 +69,11 @@
     <Compile Include="Business Layer\ITLogServices.cs" />
     <Compile Include="Data Layer\IITLogRepository.cs" />
     <Compile Include="Data Layer\ITLogRepository.cs" />
-    <Compile Include="FormAddEditITLog.cs">
+    <Compile Include="FormAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddEditITLog.Designer.cs">
-      <DependentUpon>FormAddEditITLog.cs</DependentUpon>
+    <Compile Include="FormAddEdit.Designer.cs">
+      <DependentUpon>FormAddEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
@@ -104,8 +104,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAddEditITLog.resx">
-      <DependentUpon>FormAddEditITLog.cs</DependentUpon>
+    <EmbeddedResource Include="FormAddEdit.resx">
+      <DependentUpon>FormAddEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
@@ -127,6 +127,8 @@
       <DependentUpon>ITLogEDM.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\IT_Log.Model.it_log.datasource" />
+    <None Include="Properties\DataSources\IT_Log.Model.it_personnel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -143,7 +145,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\ITLogEDM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

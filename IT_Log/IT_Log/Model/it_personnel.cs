@@ -21,7 +21,7 @@ namespace IT_Log.Model
         }
     
         public int it_personnel_id { get; set; }
-        public string personnel_name { get; set; }
+        public string it_personnel_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<it_log> it_log { get; set; }

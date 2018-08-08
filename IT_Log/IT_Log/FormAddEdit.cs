@@ -10,21 +10,18 @@ using System.Windows.Forms;
 
 namespace IT_Log
 {
-    public partial class FormAddEditITLog : Form
+    public partial class FormAddEdit : Form
     {
-        public FormAddEditITLog()
+        bool IsNew;
+
+        public FormAddEdit()
         {
             InitializeComponent();
         }
 
-        private void FormAddEditITLog_Load(object sender, EventArgs e)
+        private void FormAddEdit_Load(object sender, EventArgs e)
         {
             comboBoxITPersonnel.SelectedIndex = 0;
-        }
-
-        private void FormAddEditITLog_Load_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
