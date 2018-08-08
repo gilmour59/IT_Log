@@ -31,7 +31,6 @@ namespace IT_Log.Data_Layer
         {
             using (ittransactionlogEntities db = new ittransactionlogEntities())
             {
-
                 var itlog = (from l in db.it_log
                              join p in db.it_personnel
                              on l.it_personnel_id equals p.it_personnel_id
@@ -56,7 +55,6 @@ namespace IT_Log.Data_Layer
         {
             using (ittransactionlogEntities db = new ittransactionlogEntities())
             {
-
                 return db.it_log.Find(id);
             }
         }
@@ -65,7 +63,6 @@ namespace IT_Log.Data_Layer
         {
             using (ittransactionlogEntities db = new ittransactionlogEntities())
             {
-
                 db.it_log.Add(obj);
                 db.SaveChanges();
                 return obj;

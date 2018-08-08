@@ -88,7 +88,6 @@ namespace IT_Log
                 {
                     var log = new it_log()
                     {
-
                         name = textBoxName.Text.ToString(),
                         office = textBoxOffice.Text.ToString(),
                         date = Convert.ToDateTime(dateTimePickerDate.Text),
@@ -111,7 +110,6 @@ namespace IT_Log
                     ITLogServices.Update(updateObj);
                     MessageBox.Show("Saved!");
                 }
-
             }
         }
     }

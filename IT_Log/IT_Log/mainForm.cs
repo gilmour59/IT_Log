@@ -16,14 +16,20 @@ namespace IT_Log
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            dataGridViewITLog.DataSource = ITLogServices.GetAll();
-
-            dataGridViewITLog.ClearSelection();
+            refreshList();
+            dataGridViewITLog.Columns[0].Width = 20;
+            dataGridViewITLog.Columns[1].Width = 120;
+            dataGridViewITLog.Columns[2].Width = 40;
+            dataGridViewITLog.Columns[3].Width = 50;
+            dataGridViewITLog.Columns[4].Width = 50;
+            dataGridViewITLog.Columns[5].Width = 170;
+            dataGridViewITLog.Columns[6].Width = 120;
         }
 
         private void refreshList() {
 
             dataGridViewITLog.DataSource = ITLogServices.GetAll();
+            dataGridViewITLog.ClearSelection();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -32,7 +38,6 @@ namespace IT_Log
             {
                 if (dataGridViewITLog.SelectedCells.Count > 0)
                 {
-
                     int selectedrowindex = dataGridViewITLog.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedRow = dataGridViewITLog.Rows[selectedrowindex];
 
@@ -40,6 +45,7 @@ namespace IT_Log
                     ITLogServices.Delete(id);
 
                     refreshList();
+                    disableEditButton();
                 }
             }
         }
@@ -56,6 +62,7 @@ namespace IT_Log
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     refreshList();
+                    disableEditButton();
                 }
             }
         }
@@ -66,40 +73,46 @@ namespace IT_Log
             {
                 if (dataGridViewITLog.SelectedCells.Count > 0)
                 {
-
                     int selectedrowindex = dataGridViewITLog.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedRow = dataGridViewITLog.Rows[selectedrowindex];
 
                     int id = Convert.ToInt32(selectedRow.Cells[0].Value);
-
                     using (FormAddEdit frm = new FormAddEdit(id))
                     {
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
                             refreshList();
+                            disableEditButton();
                         }
                     }
                 }
             }
         }
 
+        private void disableEditButton() {
+
+            if (dataGridViewITLog.SelectedRows.Count == 1)
+            {
+                buttonEdit.Enabled = true;
+                buttonDelete.Enabled = true;
+            }
+            else
+            {
+                buttonEdit.Enabled = false;
+                buttonDelete.Enabled = false;
+            }
+        }
+
         private void dataGridViewITLog_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) {
-
                 if (dataGridViewITLog.HitTest(e.X, e.Y) == DataGridView.HitTestInfo.Nowhere) {
 
                     dataGridViewITLog.ClearSelection();
                 }
             }
-            if (dataGridViewITLog.SelectedRows.Count == 1)
-            {
-                buttonEdit.Enabled = true;
-            }
-            else {
-                buttonEdit.Enabled = false;
-            }
-            
+
+            disableEditButton();
         }
 
         private void mainForm_MouseUp(object sender, MouseEventArgs e)
@@ -109,14 +122,7 @@ namespace IT_Log
                 dataGridViewITLog.ClearSelection();
             }
 
-            if (dataGridViewITLog.SelectedRows.Count == 1)
-            {
-                buttonEdit.Enabled = true;
-            }
-            else
-            {
-                buttonEdit.Enabled = false;
-            }
+            disableEditButton();
         }
     }
 }

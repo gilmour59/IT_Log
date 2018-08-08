@@ -49,8 +49,11 @@
             this.comboBoxITPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxITPersonnel.FormattingEnabled = true;
             this.comboBoxITPersonnel.Items.AddRange(new object[] {
-            "Gzid",
-            "Klark"});
+            "Felixberto Baguyo Jr.",
+            "Henden Alimen",
+            "Gzid Ann Camporaso",
+            "Klark Bofill",
+            "Gilmour Almalbis"});
             this.comboBoxITPersonnel.Location = new System.Drawing.Point(162, 281);
             this.comboBoxITPersonnel.Name = "comboBoxITPersonnel";
             this.comboBoxITPersonnel.Size = new System.Drawing.Size(168, 23);
