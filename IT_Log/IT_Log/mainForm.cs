@@ -55,7 +55,7 @@ namespace IT_Log
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            using (FormAddEdit frm = new FormAddEdit())
+            using (FormAddEdit frm = new FormAddEdit(null))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {

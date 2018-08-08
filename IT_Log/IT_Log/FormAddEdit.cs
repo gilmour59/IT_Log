@@ -21,8 +21,13 @@ namespace IT_Log
         {
             InitializeComponent();
 
-            if (id == null) {
+            if (id == null)
+            {
+                IsNew = true;
+            }
+            else {
 
+                IsNew = false;
             }
         }
 
@@ -78,11 +83,11 @@ namespace IT_Log
                 var log = new it_log()
                 {
 
-                    name = textBoxName.ToString(),
-                    office = textBoxOffice.ToString(),
+                    name = textBoxName.Text.ToString(),
+                    office = textBoxOffice.Text.ToString(),
                     date = Convert.ToDateTime(dateTimePickerDate.Text),
                     time = TimeSpan.Parse(dateTimePickerTime.Text),
-                    service_request = textBoxServiceRequest.ToString(),
+                    service_request = textBoxServiceRequest.Text.ToString(),
                     it_personnel_id = comboBoxITPersonnel.SelectedIndex
                 };
 
