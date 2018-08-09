@@ -28,12 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewITLog = new System.Windows.Forms.DataGridView();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.dateTimePickerFromSearch = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePickerToSearch = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonSearchDate = new System.Windows.Forms.Button();
+            this.groupBoxSearchDate = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewITLog)).BeginInit();
+            this.groupBoxSearchDate.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewITLog
@@ -43,15 +55,15 @@
             this.dataGridViewITLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewITLog.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewITLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewITLog.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewITLog.Location = new System.Drawing.Point(31, 76);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewITLog.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewITLog.Location = new System.Drawing.Point(31, 118);
             this.dataGridViewITLog.Name = "dataGridViewITLog";
             this.dataGridViewITLog.ReadOnly = true;
             this.dataGridViewITLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -63,7 +75,7 @@
             // buttonAdd
             // 
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(212, 343);
+            this.buttonAdd.Location = new System.Drawing.Point(212, 385);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(82, 42);
             this.buttonAdd.TabIndex = 0;
@@ -75,7 +87,7 @@
             // 
             this.buttonEdit.Enabled = false;
             this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEdit.Location = new System.Drawing.Point(334, 343);
+            this.buttonEdit.Location = new System.Drawing.Point(334, 385);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(82, 42);
             this.buttonEdit.TabIndex = 1;
@@ -87,7 +99,7 @@
             // 
             this.buttonDelete.Enabled = false;
             this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.Location = new System.Drawing.Point(455, 343);
+            this.buttonDelete.Location = new System.Drawing.Point(455, 385);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(82, 42);
             this.buttonDelete.TabIndex = 2;
@@ -95,11 +107,120 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // dateTimePickerFromSearch
+            // 
+            this.dateTimePickerFromSearch.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerFromSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerFromSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerFromSearch.Location = new System.Drawing.Point(30, 40);
+            this.dateTimePickerFromSearch.Name = "dateTimePickerFromSearch";
+            this.dateTimePickerFromSearch.Size = new System.Drawing.Size(107, 21);
+            this.dateTimePickerFromSearch.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "From:   (YYYY/MM/DD)";
+            // 
+            // dateTimePickerToSearch
+            // 
+            this.dateTimePickerToSearch.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerToSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerToSearch.Location = new System.Drawing.Point(179, 40);
+            this.dateTimePickerToSearch.Name = "dateTimePickerToSearch";
+            this.dateTimePickerToSearch.Size = new System.Drawing.Size(107, 21);
+            this.dateTimePickerToSearch.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(164, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(115, 15);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "To:   (YYYY/MM/DD)";
+            // 
+            // buttonSearchDate
+            // 
+            this.buttonSearchDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSearchDate.Location = new System.Drawing.Point(303, 38);
+            this.buttonSearchDate.Name = "buttonSearchDate";
+            this.buttonSearchDate.Size = new System.Drawing.Size(60, 23);
+            this.buttonSearchDate.TabIndex = 5;
+            this.buttonSearchDate.Text = "Search";
+            this.buttonSearchDate.UseVisualStyleBackColor = true;
+            this.buttonSearchDate.Click += new System.EventHandler(this.buttonSearchDate_Click);
+            // 
+            // groupBoxSearchDate
+            // 
+            this.groupBoxSearchDate.Controls.Add(this.buttonSearchDate);
+            this.groupBoxSearchDate.Controls.Add(this.dateTimePickerFromSearch);
+            this.groupBoxSearchDate.Controls.Add(this.label2);
+            this.groupBoxSearchDate.Controls.Add(this.label1);
+            this.groupBoxSearchDate.Controls.Add(this.dateTimePickerToSearch);
+            this.groupBoxSearchDate.Location = new System.Drawing.Point(31, 21);
+            this.groupBoxSearchDate.Name = "groupBoxSearchDate";
+            this.groupBoxSearchDate.Size = new System.Drawing.Size(385, 76);
+            this.groupBoxSearchDate.TabIndex = 6;
+            this.groupBoxSearchDate.TabStop = false;
+            this.groupBoxSearchDate.Text = "Search by Date";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonSearch);
+            this.groupBox1.Controls.Add(this.textBoxSearch);
+            this.groupBox1.Location = new System.Drawing.Point(433, 21);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(219, 76);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSearch.Location = new System.Drawing.Point(18, 32);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(95, 21);
+            this.textBoxSearch.TabIndex = 0;
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSearch.Location = new System.Drawing.Point(129, 31);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 1;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReset.Location = new System.Drawing.Point(669, 37);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(55, 47);
+            this.buttonReset.TabIndex = 8;
+            this.buttonReset.Text = "Reset Data";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 410);
+            this.ClientSize = new System.Drawing.Size(761, 454);
+            this.Controls.Add(this.buttonReset);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxSearchDate);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
@@ -112,6 +233,10 @@
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainForm_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewITLog)).EndInit();
+            this.groupBoxSearchDate.ResumeLayout(false);
+            this.groupBoxSearchDate.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -122,6 +247,16 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFromSearch;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerToSearch;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonSearchDate;
+        private System.Windows.Forms.GroupBox groupBoxSearchDate;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonReset;
     }
 }
 

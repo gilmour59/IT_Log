@@ -26,12 +26,6 @@ namespace IT_Log
             dataGridViewITLog.Columns[6].Width = 120;
         }
 
-        private void refreshList() {
-
-            dataGridViewITLog.DataSource = ITLogServices.GetAll();
-            dataGridViewITLog.ClearSelection();
-        }
-
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete this?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -123,6 +117,34 @@ namespace IT_Log
             }
 
             disableEditButton();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            var searchText = textBoxSearch.Text;
+ 
+            dataGridViewITLog.DataSource = ITLogServices.Search(searchText);
+            dataGridViewITLog.ClearSelection();
+        }
+
+        private void buttonSearchDate_Click(object sender, EventArgs e)
+        {
+            DateTime from = dateTimePickerFromSearch.Value;
+            DateTime to = dateTimePickerToSearch.Value;
+
+            dataGridViewITLog.DataSource = ITLogServices.SearchByDate(from, to);
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            dataGridViewITLog.DataSource = ITLogServices.GetAll();
+            dataGridViewITLog.ClearSelection();
+        }
+
+        private void refreshList()
+        {
+            dataGridViewITLog.DataSource = ITLogServices.GetAll();
+            dataGridViewITLog.ClearSelection();
         }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ittransactionlogModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ittransactionlogModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="it_log">
           <Key>
             <PropertyRef Name="it_log_id" />
@@ -24,7 +24,7 @@
           <Property Name="it_personnel_id" Type="int" Nullable="false" />
           <Property Name="it_personnel_name" Type="varchar" MaxLength="45" />
         </EntityType>
-        <Association Name="it_personnel_id">
+        <Association Name="IT_Personnel_FK">
           <End Role="it_personnel" Type="Self.it_personnel" Multiplicity="0..1" />
           <End Role="it_log" Type="Self.it_log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -39,7 +39,7 @@
         <EntityContainer Name="ittransactionlogModelStoreContainer">
           <EntitySet Name="it_log" EntityType="Self.it_log" Schema="ittransactionlog" store:Type="Tables" />
           <EntitySet Name="it_personnel" EntityType="Self.it_personnel" Schema="ittransactionlog" store:Type="Tables" />
-          <AssociationSet Name="it_personnel_id" Association="Self.it_personnel_id">
+          <AssociationSet Name="IT_Personnel_FK" Association="Self.IT_Personnel_FK">
             <End Role="it_personnel" EntitySet="it_personnel" />
             <End Role="it_log" EntitySet="it_log" />
           </AssociationSet>
@@ -60,7 +60,7 @@
           <Property Name="time" Type="Time" />
           <Property Name="service_request" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="it_personnel_id" Type="Int32" />
-          <NavigationProperty Name="it_personnel" Relationship="Self.it_personnel_id" FromRole="it_log" ToRole="it_personnel" />
+          <NavigationProperty Name="it_personnel" Relationship="Self.IT_Personnel_FK" FromRole="it_log" ToRole="it_personnel" />
         </EntityType>
         <EntityType Name="it_personnel">
           <Key>
@@ -68,9 +68,9 @@
           </Key>
           <Property Name="it_personnel_id" Type="Int32" Nullable="false" />
           <Property Name="it_personnel_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="it_log" Relationship="Self.it_personnel_id" FromRole="it_personnel" ToRole="it_log" />
+          <NavigationProperty Name="it_log" Relationship="Self.IT_Personnel_FK" FromRole="it_personnel" ToRole="it_log" />
         </EntityType>
-        <Association Name="it_personnel_id">
+        <Association Name="IT_Personnel_FK">
           <End Role="it_personnel" Type="Self.it_personnel" Multiplicity="0..1" />
           <End Role="it_log" Type="Self.it_log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -85,7 +85,7 @@
         <EntityContainer Name="ittransactionlogEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="it_log" EntityType="Self.it_log" />
           <EntitySet Name="it_personnel" EntityType="Self.it_personnel" />
-          <AssociationSet Name="it_personnel_id" Association="Self.it_personnel_id">
+          <AssociationSet Name="IT_Personnel_FK" Association="Self.IT_Personnel_FK">
             <End Role="it_personnel" EntitySet="it_personnel" />
             <End Role="it_log" EntitySet="it_log" />
           </AssociationSet>

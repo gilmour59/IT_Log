@@ -81,26 +81,26 @@
     <Compile Include="mainForm.Designer.cs">
       <DependentUpon>mainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\ITLogEDM.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ITLogEDM.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ITLogEDM.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ITLogEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ITLogEDM.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ITLogEDM.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Model\it_log.cs">
-      <DependentUpon>ITLogEDM.tt</DependentUpon>
+      <DependentUpon>IT_LogEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IT_LogEDM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_LogEDM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IT_LogEDM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_LogEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IT_LogEDM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_LogEDM.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\it_personnel.cs">
-      <DependentUpon>ITLogEDM.tt</DependentUpon>
+      <DependentUpon>IT_LogEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,12 +119,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="Model\ITLogEDM.edmx">
+    <EntityDeploy Include="Model\IT_LogEDM.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ITLogEDM.Designer.cs</LastGenOutput>
+      <LastGenOutput>IT_LogEDM.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\ITLogEDM.edmx.diagram">
-      <DependentUpon>ITLogEDM.edmx</DependentUpon>
+    <None Include="Model\IT_LogEDM.edmx.diagram">
+      <DependentUpon>IT_LogEDM.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\IT_Log.Model.it_log.datasource" />
@@ -146,15 +146,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\ITLogEDM.Context.tt">
+    <Content Include="Model\IT_LogEDM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ITLogEDM.edmx</DependentUpon>
-      <LastGenOutput>ITLogEDM.Context.cs</LastGenOutput>
+      <DependentUpon>IT_LogEDM.edmx</DependentUpon>
+      <LastGenOutput>IT_LogEDM.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\ITLogEDM.tt">
+    <Content Include="Model\IT_LogEDM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ITLogEDM.edmx</DependentUpon>
-      <LastGenOutput>ITLogEDM.cs</LastGenOutput>
+      <DependentUpon>IT_LogEDM.edmx</DependentUpon>
+      <LastGenOutput>IT_LogEDM.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

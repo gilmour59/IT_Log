@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using IT_Log.Data_Layer;
 using IT_Log.Model;
@@ -12,6 +13,16 @@ namespace IT_Log.Business_Layer
         static ITLogServices() {
 
             repository = new ITLogRepository();
+        }
+
+        public static IList Search(string text) {
+
+            return repository.Search(text);
+        }
+
+        public static IList SearchByDate(DateTime from, DateTime to) {
+
+            return repository.SearchByDate(from, to);
         }
 
         public static IList GetAll() {
