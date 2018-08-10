@@ -4,6 +4,11 @@ using System.Windows.Forms;
 using IT_Log.Business_Layer;
 using IT_Log.Model;
 using IT_Log.Data_Layer;
+using Microsoft.Reporting.WinForms;
+using System.Collections;
+using System.Data;
+using System.Reflection;
+using System.Linq;
 
 namespace IT_Log
 {
@@ -24,6 +29,8 @@ namespace IT_Log
             dataGridViewITLog.Columns[4].Width = 50;
             dataGridViewITLog.Columns[5].Width = 170;
             dataGridViewITLog.Columns[6].Width = 120;
+
+            list = ITLogServices.GetAll();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -105,7 +112,6 @@ namespace IT_Log
                     dataGridViewITLog.ClearSelection();
                 }
             }
-
             disableEditButton();
         }
 
@@ -139,6 +145,19 @@ namespace IT_Log
         {
             dataGridViewITLog.DataSource = ITLogServices.GetAll();
             dataGridViewITLog.ClearSelection();
+        }
+
+        private IList list { get; set; }
+
+        private void buttonReport_Click(object sender, EventArgs e)
+        {
+            using (ittransactionlogEntities db = new ittransactionlogEntities())
+            {
+                FormReport frm = new FormReport();
+
+                frm.it_logBindingSource.DataSource = list; //USE THIS TO HAVE A GETTER AND SETTER FOR DYNAMIC BINDING SOURCE
+                frm.ShowDialog();
+            }
         }
 
         private void refreshList()

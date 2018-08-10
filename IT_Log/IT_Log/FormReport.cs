@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IT_Log.Model;
 
 namespace IT_Log
 {
@@ -20,7 +22,7 @@ namespace IT_Log
         private void FormReport_Load(object sender, EventArgs e)
         {
 
-            this.reportViewer1.RefreshReport();
+            this.reportViewerIT_Log.RefreshReport();
         }
     }
 }
