@@ -126,6 +126,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IT_LogEDM.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\it_log_all.cs" />
     <Compile Include="Model\it_personnel.cs">
       <DependentUpon>IT_LogEDM.tt</DependentUpon>
     </Compile>
@@ -160,6 +161,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\IT_Log.Model.it_log.datasource" />
+    <None Include="Properties\DataSources\IT_Log.Model.it_log_all.datasource" />
     <None Include="Properties\DataSources\IT_Log.Model.it_personnel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -202,6 +204,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

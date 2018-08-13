@@ -29,14 +29,14 @@ namespace IT_Log.Data_Layer
             }
         }
 
-        public IList GetAll()
+        public List<it_log_all> GetAll()
         {
             using (ittransactionlogEntities db = new ittransactionlogEntities())
             {
                 var itlog = (from l in db.it_log
                              join p in db.it_personnel
                              on l.it_personnel_id equals p.it_personnel_id
-                             select new
+                             select new it_log_all
                              {
                                  id = l.it_log_id,
                                  Name = l.name,
@@ -52,7 +52,7 @@ namespace IT_Log.Data_Layer
             }
         }
 
-        public IList Search(string text)
+        public List<it_log_all> Search(string text)
         {
             using (ittransactionlogEntities db = new ittransactionlogEntities())
             {
@@ -61,7 +61,7 @@ namespace IT_Log.Data_Layer
                               on l.it_personnel_id equals p.it_personnel_id
                               where(l.name.Contains(text) || l.office.Contains(text) || 
                               l.service_request.Contains(text) || p.it_personnel_name.Contains(text))
-                              select new
+                              select new it_log_all
                               {
                                   id = l.it_log_id,
                                   Name = l.name,
@@ -77,7 +77,7 @@ namespace IT_Log.Data_Layer
             }
         }
 
-        public IList SearchByDate(DateTime from, DateTime to)
+        public List<it_log_all> SearchByDate(DateTime from, DateTime to)
         {
             using (ittransactionlogEntities db = new ittransactionlogEntities())
             {
@@ -93,7 +93,7 @@ namespace IT_Log.Data_Layer
                               join p in db.it_personnel
                               on l.it_personnel_id equals p.it_personnel_id
                               where (l.date >= @from.Date && l.date <= @to.Date)
-                              select new
+                              select new it_log_all
                               {
                                   id = l.it_log_id,
                                   Name = l.name,

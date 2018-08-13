@@ -14,6 +14,8 @@ namespace IT_Log
 {
     public partial class mainForm : Form
     {
+        List<it_log_all> value { get; set; }
+
         public mainForm()
         {
             InitializeComponent();
@@ -25,12 +27,10 @@ namespace IT_Log
             dataGridViewITLog.Columns[0].Width = 20;
             dataGridViewITLog.Columns[1].Width = 120;
             dataGridViewITLog.Columns[2].Width = 40;
-            dataGridViewITLog.Columns[3].Width = 50;
-            dataGridViewITLog.Columns[4].Width = 50;
+            dataGridViewITLog.Columns[3].Width = 60;
+            dataGridViewITLog.Columns[4].Width = 60;
             dataGridViewITLog.Columns[5].Width = 170;
             dataGridViewITLog.Columns[6].Width = 120;
-
-            list = ITLogServices.GetAll();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -129,7 +129,8 @@ namespace IT_Log
         {
             var searchText = textBoxSearch.Text;
  
-            dataGridViewITLog.DataSource = ITLogServices.Search(searchText);
+            value = ITLogServices.Search(searchText);
+            dataGridViewITLog.DataSource = value;
             dataGridViewITLog.ClearSelection();
         }
 
@@ -138,31 +139,34 @@ namespace IT_Log
             DateTime from = dateTimePickerFromSearch.Value;
             DateTime to = dateTimePickerToSearch.Value;
 
-            dataGridViewITLog.DataSource = ITLogServices.SearchByDate(from, to);
+            value = ITLogServices.SearchByDate(from, to);
+            dataGridViewITLog.DataSource = value;
+            dataGridViewITLog.ClearSelection();
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            dataGridViewITLog.DataSource = ITLogServices.GetAll();
-            dataGridViewITLog.ClearSelection();
+            refreshList();
         }
-
-        private IList list { get; set; }
 
         private void buttonReport_Click(object sender, EventArgs e)
         {
-            using (ittransactionlogEntities db = new ittransactionlogEntities())
-            {
-                FormReport frm = new FormReport();
+            FormReport frm = new FormReport();
 
-                frm.it_logBindingSource.DataSource = list; //USE THIS TO HAVE A GETTER AND SETTER FOR DYNAMIC BINDING SOURCE
-                frm.ShowDialog();
-            }
+            ReportDataSource rds = new ReportDataSource();
+
+            rds.Name = "DataSetIT_Log_All";
+            rds.Value = value;
+            frm.reportViewerIT_Log.LocalReport.DataSources.Clear();
+            frm.reportViewerIT_Log.LocalReport.DataSources.Add(rds);
+            frm.reportViewerIT_Log.LocalReport.ReportEmbeddedResource = "IT_Log.ReportIT_Log.rdlc";
+            frm.ShowDialog();
         }
 
         private void refreshList()
         {
-            dataGridViewITLog.DataSource = ITLogServices.GetAll();
+            value = ITLogServices.GetAll();
+            dataGridViewITLog.DataSource = value;
             dataGridViewITLog.ClearSelection();
         }
     }

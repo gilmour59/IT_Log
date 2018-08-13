@@ -7,12 +7,12 @@ namespace IT_Log.Data_Layer
 {
     interface IITLogRepository
     {
-        IList GetAll();
+        List<it_log_all> GetAll();
         it_log GetById(int id);
         it_log Insert(it_log obj);
         void Update(it_log obj);
         void Delete(int id);
-        IList SearchByDate(DateTime from, DateTime to);
-        IList Search(string text);
+        List<it_log_all> SearchByDate(DateTime from, DateTime to);
+        List<it_log_all> Search(string text);
     }
 }
