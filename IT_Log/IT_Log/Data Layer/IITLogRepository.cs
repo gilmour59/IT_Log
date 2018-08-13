@@ -14,5 +14,6 @@ namespace IT_Log.Data_Layer
         void Delete(int id);
         List<it_log_all> SearchByDate(DateTime from, DateTime to);
         List<it_log_all> Search(string text);
+        List<it_log_all> SearchByPersonnel(int id);
     }
 }

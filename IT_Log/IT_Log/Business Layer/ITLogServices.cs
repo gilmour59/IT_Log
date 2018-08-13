@@ -29,6 +29,11 @@ namespace IT_Log.Business_Layer
             return repository.SearchByDate(from, to);
         }
 
+        public static List<it_log_all> SearchByPersonnel(int id) {
+
+            return repository.SearchByPersonnel(id);
+        }
+
         public static List<it_log_all> GetAll() {
 
             return repository.GetAll();

@@ -14,6 +14,9 @@ namespace IT_Log
 {
     public partial class mainForm : Form
     {
+        private bool isByPersonnel;
+
+        private bool isByDate { get; set; }
         List<it_log_all> value { get; set; }
 
         public mainForm()
@@ -23,6 +26,7 @@ namespace IT_Log
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            comboBoxPersonnel.SelectedIndex = 0;
             refreshList();
             dataGridViewITLog.Columns[0].Width = 20;
             dataGridViewITLog.Columns[1].Width = 120;
@@ -31,6 +35,8 @@ namespace IT_Log
             dataGridViewITLog.Columns[4].Width = 60;
             dataGridViewITLog.Columns[5].Width = 170;
             dataGridViewITLog.Columns[6].Width = 120;
+
+            setMinDate();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -132,6 +138,9 @@ namespace IT_Log
             value = ITLogServices.Search(searchText);
             dataGridViewITLog.DataSource = value;
             dataGridViewITLog.ClearSelection();
+
+            isByDate = false;
+            isByPersonnel = false;
         }
 
         private void buttonSearchDate_Click(object sender, EventArgs e)
@@ -142,6 +151,22 @@ namespace IT_Log
             value = ITLogServices.SearchByDate(from, to);
             dataGridViewITLog.DataSource = value;
             dataGridViewITLog.ClearSelection();
+
+            isByDate = true;
+            isByPersonnel = false;
+        }
+
+
+        private void buttonSearchPersonnel_Click(object sender, EventArgs e)
+        {
+            int id = comboBoxPersonnel.SelectedIndex;
+
+            value = ITLogServices.SearchByPersonnel(id);
+            dataGridViewITLog.DataSource = value;
+            dataGridViewITLog.ClearSelection();
+
+            isByDate = false;
+            isByPersonnel = true;
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
@@ -160,7 +185,33 @@ namespace IT_Log
             frm.reportViewerIT_Log.LocalReport.DataSources.Clear();
             frm.reportViewerIT_Log.LocalReport.DataSources.Add(rds);
             frm.reportViewerIT_Log.LocalReport.ReportEmbeddedResource = "IT_Log.ReportIT_Log.rdlc";
+
+            if (isByDate)
+            {
+                ReportParameter[] rParams = new ReportParameter[] {
+
+                    new ReportParameter("byDateFrom", dateTimePickerFromSearch.Value.Date.ToShortDateString()),
+                    new ReportParameter("byDateTo", dateTimePickerToSearch.Value.Date.ToShortDateString()),
+                };
+
+                frm.reportViewerIT_Log.LocalReport.SetParameters(rParams);
+            }
+            else if (isByPersonnel)
+            {
+                ReportParameter[] rParams = new ReportParameter[] {
+
+                    new ReportParameter("byPersonnel", comboBoxPersonnel.Text)
+                };
+
+                frm.reportViewerIT_Log.LocalReport.SetParameters(rParams);
+            }
+            
             frm.ShowDialog();
+        }
+
+        private void setMinDate() {
+
+            dateTimePickerToSearch.MinDate = dateTimePickerFromSearch.Value;
         }
 
         private void refreshList()
@@ -168,6 +219,14 @@ namespace IT_Log
             value = ITLogServices.GetAll();
             dataGridViewITLog.DataSource = value;
             dataGridViewITLog.ClearSelection();
+
+            isByDate = false;
+            isByPersonnel = false;
+        }
+
+        private void dateTimePickerFromSearch_ValueChanged(object sender, EventArgs e)
+        {
+            setMinDate();
         }
     }
 }

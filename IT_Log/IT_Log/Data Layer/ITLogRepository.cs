@@ -9,6 +9,57 @@ namespace IT_Log.Data_Layer
 {
     class ITLogRepository : IITLogRepository
     {
+        public List<it_log_all> GetAll()
+        {
+            using (ittransactionlogEntities db = new ittransactionlogEntities())
+            {
+                var itlog = (from l in db.it_log
+                             join p in db.it_personnel
+                             on l.it_personnel_id equals p.it_personnel_id
+                             select new it_log_all
+                             {
+                                 id = l.it_log_id,
+                                 Name = l.name,
+                                 Office = l.office,
+                                 Date = l.date,
+                                 Time = l.time,
+                                 Service_Request = l.service_request,
+                                 IT_Personnel = p.it_personnel_name
+
+                             }).ToList();
+
+                return itlog;
+            }
+        }
+
+        public it_log GetById(int id)
+        {
+            using (ittransactionlogEntities db = new ittransactionlogEntities())
+            {
+                return db.it_log.Find(id);
+            }
+        }
+
+        public it_log Insert(it_log obj)
+        {
+            using (ittransactionlogEntities db = new ittransactionlogEntities())
+            {
+                db.it_log.Add(obj);
+                db.SaveChanges();
+                return obj;
+            }
+        }
+
+        public void Update(it_log obj)
+        {
+            using (ittransactionlogEntities db = new ittransactionlogEntities())
+            {
+
+                db.it_log.Attach(obj);
+                db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
 
         public void Delete(int id)
         {
@@ -26,29 +77,6 @@ namespace IT_Log.Data_Layer
                 db.it_log.Attach(delete);
                 db.it_log.Remove(delete);
                 db.SaveChanges();
-            }
-        }
-
-        public List<it_log_all> GetAll()
-        {
-            using (ittransactionlogEntities db = new ittransactionlogEntities())
-            {
-                var itlog = (from l in db.it_log
-                             join p in db.it_personnel
-                             on l.it_personnel_id equals p.it_personnel_id
-                             select new it_log_all
-                             {
-                                 id = l.it_log_id,
-                                 Name = l.name,
-                                 Office = l.office,
-                                 Date = l.date,
-                                 Time = l.time,
-                                 Service_Request = l.service_request,
-                                 IT_Personnel = p.it_personnel_name
-                                
-                             }).ToList();
-
-                return itlog;
             }
         }
 
@@ -109,32 +137,35 @@ namespace IT_Log.Data_Layer
             }
         }
 
-        public it_log GetById(int id)
+        public List<it_log_all> SearchByPersonnel(int id)
         {
             using (ittransactionlogEntities db = new ittransactionlogEntities())
             {
-                return db.it_log.Find(id);
-            }
-        }
+                /*var result = db.Database.SqlQuery<IList>("SELECT l.it_log_id, l.name, " +
+                    "l.office, l.date, l.time, l.service_request, p.it_personnel_name " +
+                    "FROM it_log AS l INNER JOIN it_personnel AS p ON l.it_personnel_id = p.it_personnel_id" +
+                    "WHERE l.date BETWEEN DATE(@from) AND DATE(@to)", 
+                    new SqlParameter("@from", from), 
+                    new SqlParameter("@to", to)).ToList();
+                    */
 
-        public it_log Insert(it_log obj)
-        {
-            using (ittransactionlogEntities db = new ittransactionlogEntities())
-            {
-                db.it_log.Add(obj);
-                db.SaveChanges();
-                return obj;
-            }
-        }
+                var result = (from l in db.it_log
+                              join p in db.it_personnel
+                              on l.it_personnel_id equals p.it_personnel_id
+                              where l.it_personnel_id == id
+                              select new it_log_all
+                              {
+                                  id = l.it_log_id,
+                                  Name = l.name,
+                                  Office = l.office,
+                                  Date = l.date,
+                                  Time = l.time,
+                                  Service_Request = l.service_request,
+                                  IT_Personnel = p.it_personnel_name
 
-        public void Update(it_log obj)
-        {
-            using (ittransactionlogEntities db = new ittransactionlogEntities())
-            {
+                              }).ToList();
 
-                db.it_log.Attach(obj);
-                db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                return result;
             }
         }
     }

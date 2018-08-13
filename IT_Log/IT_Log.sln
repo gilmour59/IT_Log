@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IT_Log", "IT_Log\IT_Log.csproj", "{B182E9DE-130D-4704-841F-FC8042F5A763}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IT Transaction Log Setup", "IT Transaction Log Setup\IT Transaction Log Setup.vdproj", "{C526548B-1B5E-44B2-ADC8-7DC47FB65EBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{B182E9DE-130D-4704-841F-FC8042F5A763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B182E9DE-130D-4704-841F-FC8042F5A763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B182E9DE-130D-4704-841F-FC8042F5A763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C526548B-1B5E-44B2-ADC8-7DC47FB65EBC}.Debug|Any CPU.ActiveCfg = Debug
+		{C526548B-1B5E-44B2-ADC8-7DC47FB65EBC}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
